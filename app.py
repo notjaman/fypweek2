@@ -1,5 +1,6 @@
+pip install streamlit_shap
 import streamlit as st
-import shap as shap
+import shap
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
