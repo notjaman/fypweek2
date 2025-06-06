@@ -1,4 +1,4 @@
-pip install streamlit_shap
+!pip install streamlit_shap
 import streamlit as st
 import shap
 import pandas as pd
