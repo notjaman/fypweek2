@@ -44,6 +44,28 @@ if uploaded_file:
         st.progress(confidence)
         st.write(f"Confidence Score: **{confidence}%**")
 
+        # Show emotion result
+        st.subheader("🎯 Emotion Result")
+        st.markdown(f"### {top_emotion['emoji']} **{top_emotion['name']}**")
+        
+        # Gauge chart using Plotly
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=confidence,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': "Confidence Level"},
+            gauge={
+                'axis': {'range': [0, 100]},
+                'bar': {'color': "green"},
+                'steps': [
+                    {'range': [0, 50], 'color': "lightgray"},
+                    {'range': [50, 75], 'color': "yellow"},
+                    {'range': [75, 100], 'color': "lightgreen"}
+                ],
+            }
+        ))
+        st.plotly_chart(fig, use_container_width=True)
+
     with st.expander("ℹ️ What This Does"):
         st.markdown("""
         - Upload a dog's sound (bark, whimper, etc.)
@@ -54,25 +76,3 @@ if uploaded_file:
 
 else:
     st.info("Upload a file to get started.")
-
-# Show emotion result
-st.subheader("🎯 Emotion Result")
-st.markdown(f"### {top_emotion['emoji']} **{top_emotion['name']}**")
-
-# Gauge chart using Plotly
-fig = go.Figure(go.Indicator(
-    mode="gauge+number",
-    value=confidence,
-    domain={'x': [0, 1], 'y': [0, 1]},
-    title={'text': "Confidence Level"},
-    gauge={
-        'axis': {'range': [0, 100]},
-        'bar': {'color': "green"},
-        'steps': [
-            {'range': [0, 50], 'color': "lightgray"},
-            {'range': [50, 75], 'color': "yellow"},
-            {'range': [75, 100], 'color': "lightgreen"}
-        ],
-    }
-))
-st.plotly_chart(fig, use_container_width=True)
