@@ -41,7 +41,7 @@ if uploaded_file:
 
         st.subheader("🎯 Emotion Result")
         st.markdown(f"### {top_emotion['emoji']} **{top_emotion['name']}**")
-        st.progress(confidence)
+        st.progress(confidence / 100)
         st.write(f"Confidence Score: **{confidence}%**")
 
         # Show emotion result
