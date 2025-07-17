@@ -2,3 +2,4 @@ shap
 streamlit_shap
 matplotlib
 librosa
+plotly
